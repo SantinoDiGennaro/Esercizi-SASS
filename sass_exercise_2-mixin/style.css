@@ -1,7 +1,12 @@
 div {
+  color: green;
   border: 1px solid red;
+  font-size: unset;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   padding-bottom: 20px;
+  gap: 1rem;
 }
 div h1 {
   display: flex;
@@ -28,6 +33,18 @@ div section article:nth-child(odd) p {
 }
 div section article:nth-child(even) p {
   color: red;
+}
+div section:last-child article {
+  color: green;
+  border: 1px solid blue;
+  font-size: 26px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+div section:last-child article p {
+  color: green;
+  font-size: inherit;
 }
 
 /*# sourceMappingURL=style.css.map */

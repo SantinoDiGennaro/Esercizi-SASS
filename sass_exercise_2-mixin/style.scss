@@ -1,7 +1,17 @@
+@mixin article-card ($color, $border-color, $font-size) {
+    color:$color;
+    border: 1px solid $border-color;
+    font-size: $font-size;
+
+}
+
 div{
-    border: 1px solid red;
+    @include article-card(green, red, unset);
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     padding-bottom: 20px;
+    gap:1rem;
     h1 {
         display: flex;
         justify-content: center;
@@ -31,6 +41,17 @@ div{
                 }
             }
         }
+        &:last-child{
+            article{
+                @include article-card(green, blue, 26px);
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                p{
+                    color: green;
+                    font-size: inherit;
+                }
+            }
+        }
     }
 }
-
