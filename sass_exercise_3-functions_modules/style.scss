@@ -1,0 +1,56 @@
+
+@function rem ($size) {
+    $font-size: $size/16;
+    @return $font-size;
+}
+
+div{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-bottom: 20px;
+    gap:1rem;
+    h1 {
+        display: flex;
+        justify-content: center;
+        color: green;
+        text-decoration: underline;
+        text-decoration-color: blue;
+        text-decoration-thickness: 1px;
+    }
+    section {
+        display: flex;
+        flex-direction: row;
+        article{
+            border: 1px solid green;
+            p{
+                display: flex;
+                text-align: center;
+                font-size: rem(20)+rem;
+            }
+            &:nth-child(odd){
+                p{
+                    color: blue;
+                }
+            }
+            &:nth-child(even){
+                p{
+                    color: red;
+                }
+            }
+        }
+        &:last-child{
+            article{
+                border: 1px solid blue;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                p{
+                    color: green;
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+}
