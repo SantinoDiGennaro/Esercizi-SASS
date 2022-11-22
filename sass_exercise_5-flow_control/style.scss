@@ -1,0 +1,91 @@
+@use "sass:color";
+
+@function rem ($size) {
+    $square-size: $size/16;
+    @return $square-size;
+}
+
+div{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-bottom: 20px;
+    gap:1rem;
+    h1 {
+        display: flex;
+        justify-content: center;
+        color: green;
+        text-decoration: underline;
+        text-decoration-color: blue;
+        text-decoration-thickness: 1px;
+    }
+    h2 {
+        @extend h1;
+        align-self: center;
+        text-decoration: unset;
+        border:1px solid red;
+        width: fit-content;
+        padding:20px;
+    }
+    section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        article{
+            border: 1px solid green;
+            p{
+                display: flex;
+                text-align: center;
+                font-size: 20px;
+            }
+            &:nth-child(odd){
+                p{
+                    color: blue;
+                }
+            }
+            &:nth-child(even){
+                p{
+                    color: red;
+                }
+            }
+        }
+        &:last-child{
+            article{
+                border: 1px solid blue;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                p{
+                    color: green;
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+    &:nth-child(1){
+        div{
+            height: rem(45)+rem;
+            width: rem(45)+rem;
+            @for $var from 1 to 20 {
+                $color:black;
+                $color: color.adjust($color, $lightness: +5% * $var);
+                $background-color: color.invert($color);
+                @if $var == 10 {
+                    $color:red;
+                    $background-color: blue;
+                }
+                &:nth-child(#{$var}){
+                    color:$color;
+                    background-color: $background-color;
+                }
+            }
+        }
+    }
+}
+
+@for $index from 1 to 4 {
+    .fs-#{$index}rem{
+        font-size: $index + rem;
+    }
+}
