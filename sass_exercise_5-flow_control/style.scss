@@ -88,11 +88,10 @@ div{
     }
 }
 
+$indexs:1rem, 2rem, 3rem;
 
-
-
-@for $index from 1 to 4 {
-    .fs-#{$index}rem{
-        font-size: $index + rem;
+@each $index in $indexs {
+    .fs-#{$index}{
+        font-size: $index;
     }
 }
