@@ -1,56 +1,66 @@
+@use "function.scss" as f;
+@use "variables.scss" as v;
+
+@mixin article-card ($color, $border-color, $font-size) {
+    color:$color;
+    border: f.rem(1) solid $border-color;
+    font-size: $font-size;
+}
+
+%text{
+    display: flex;
+    align-self: center;
+    color: v.$green;
+    text-decoration: underline;
+    text-decoration-color: v.$blue;
+    text-decoration-thickness: f.rem(1);
+    width: fit-content;
+}
+
 div{
-    border: 1px solid red;
+    @include article-card(v.$green, v.$red, 1rem);
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    padding-bottom: 20px;
+    padding: f.rem(10);
+    padding-bottom: f.rem(20);
     gap:1rem;
     h1 {
-        display: flex;
-        justify-content: center;
-        color: green;
-        text-decoration: underline;
-        text-decoration-color: blue;
-        text-decoration-thickness: 1px;
+        @extend %text;
     }
-    h2 {
-        @extend h1;
-        align-self: center;
-        text-decoration: unset;
-        border:1px solid red;
-        width: fit-content;
-        padding:20px;
+    h2{
+        @extend %text;
+        padding: 1rem;
+        border: f.rem(1) solid v.$red;
     }
     section {
         display: flex;
         flex-direction: row;
         article{
-            border: 1px solid green;
+            border: f.rem(1) solid v.$green;
             p{
                 display: flex;
                 text-align: center;
-                font-size: 20px;
             }
             &:nth-child(odd){
                 p{
-                    color: blue;
+                    color: v.$blue;
                 }
             }
             &:nth-child(even){
                 p{
-                    color: red;
+                    color: v.$red;
                 }
             }
         }
         &:last-child{
             article{
-                border: 1px solid blue;
+                @include article-card(v.$green, v.$blue, f.rem(24));
                 width: 100%;
                 display: flex;
                 justify-content: center;
                 p{
-                    color: green;
-                    font-size: 26px;
+                    color: v.$green;
+                    font-size: inherit;
                 }
             }
         }
